@@ -20,7 +20,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="d-flex p-2 bd-highlight">
+              <li class="d-flex nav-item">
               <% if user_signed_in? %>
                 <%= link_to "マイページ", "/users/#{current_user.id}", class: "nav-link active" %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link active" %>
