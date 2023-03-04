@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -57,3 +59,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+
+gem 'devise'
+# 日本語化
+gem 'rails-i18n', '~> 6.0'
+gem 'devise-i18n'
+# Bootstrap
+gem 'devise-bootstrap-views', '~> 1.0'

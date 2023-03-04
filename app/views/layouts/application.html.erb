@@ -4,12 +4,47 @@
     <title>KondateChat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-warning">
+        <div class="container-fluid">
+          <%= link_to '献立チャット', root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="d-flex nav-item">
+              <% if user_signed_in? %>
+                <%= link_to "#{current_user.nickname}さんのマイページ", "/users/#{current_user.id}", class: "nav-link active" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link active" %>
+              <% else %>
+                <%= link_to 'ログイン', new_user_session_path, class: "nav-link active" %>
+              <% end %>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer class="text-muted py-5">
+      <div class="container">
+        <p class="float-end mb-1">
+          <a href="#">Back to top</a>
+        </p>
+
+      </div>
+    </footer>
   </body>
 </html>
