@@ -25,7 +25,7 @@
                 <%= link_to "マイページ", "/users/#{current_user.id}", class: "nav-link active" %>
                 <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link active" %>
               <% else %>
-                <%= link_to 'マイページ', new_user_session_path, class: "nav-link active" %>
+                <%= link_to 'ログイン', new_user_session_path, class: "nav-link active" %>
               <% end %>
               </li>
             </ul>
@@ -37,10 +37,6 @@
         </div>
       </nav>
     </header>
-
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
     <%= yield %>
     <footer class="text-muted py-5">
       <div class="container">
