@@ -1,4 +1,6 @@
 <section class="py-5 text-center container">
+<h2>レシピ投稿</h2>
+  <%= form_with model: @recipe, url: recipes_path, local: true do |f| %>
   <form>
 
     <div class="row mb-3">
@@ -40,21 +42,21 @@
     </div>
 
     <div class="row mb-3">
-      <label for="input-headline" class="col-sm-2 col-form-label">材料</label>
+      <label for="input-ingredient" class="col-sm-2 col-form-label">材料</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
       </div>
     </div>
 
     <div class="row mb-3">
-      <label for="input-headline" class="col-sm-2 col-form-label">作り方</label>
+      <label for="input-direction" class="col-sm-2 col-form-label">作り方</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
       </div>
     </div>
 
     <div class="row mb-3">
-      <label for="input-headline" class="col-sm-2 col-form-label">メモ</label>
+      <label for="input-memo" class="col-sm-2 col-form-label">メモ</label>
       <div class="col-sm-10">
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
       </div>
@@ -63,6 +65,6 @@
     <input class="btn btn-primary" type="submit" value="投稿する">
     <a class="btn btn-primary" href="#" role="button">戻る</a>
 
-
   </form>
+  <% end %>
 </section>

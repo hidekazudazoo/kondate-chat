@@ -9,7 +9,12 @@ class RecipesController < ApplicationController
   end
 
   def create
-    Recipe.create(recipe_params)
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
