@@ -13,14 +13,7 @@
     <div class="row mb-3">
       <label for="input-category" class="col-sm-2 col-form-label">カテゴリー</label>
       <div class="col-sm-10">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>選択してください</option>
-          <option value="1">主食</option>
-          <option value="2">主菜</option>
-          <option value="3">副菜</option>
-          <option value="4">汁物</option>
-          <option value="5">デザート</option>
-        </select>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-select"}) %>
       </div>
     </div>
 
@@ -28,8 +21,7 @@
       <label for="input-image" class="col-sm-2 col-form-label">写真</label>
       <div class="col-sm-10">
         <div class="input-group mb-3">
-          <input type="file" class="form-control" id="inputGroupFile02">
-          <label class="input-group-text" for="inputGroupFile02">Upload</label>
+          <%= f.file_field :image, class: "form-control" %>
         </div>
       </div>
     </div>
@@ -37,28 +29,28 @@
     <div class="row mb-3">
       <label for="input-headline" class="col-sm-2 col-form-label">メインコピー</label>
       <div class="col-sm-10">
-        <%= f.text_area :headline, rows: "3", placeholder: "例）スパイスたくさんのピリ辛鍋", class: "form-control", id: "exampleFormControlTextarea1" %>
+        <%= f.text_area :headline, rows: "3", placeholder: "例）スパイスたくさんのピリ辛鍋", class: "form-control" %>
       </div>
     </div>
 
     <div class="row mb-3">
       <label for="input-ingredient" class="col-sm-2 col-form-label">材料</label>
       <div class="col-sm-10">
-        <%= f.text_area :ingredient, rows: "10", placeholder: "例）にんじん、タマネギ、白菜", class: "form-control", id: "exampleFormControlTextarea1" %>
+        <%= f.text_area :ingredient, rows: "10", placeholder: "例）にんじん、タマネギ、白菜", class: "form-control" %>
       </div>
     </div>
 
     <div class="row mb-3">
       <label for="input-direction" class="col-sm-2 col-form-label">作り方</label>
       <div class="col-sm-10">
-        <%= f.text_area :direction, rows: "10", placeholder: "例）はじめに鍋のもとを作ります", class: "form-control", id: "exampleFormControlTextarea1" %>
+        <%= f.text_area :direction, rows: "10", placeholder: "例）はじめに鍋のもとを作ります", class: "form-control" %>
       </div>
     </div>
 
     <div class="row mb-3">
       <label for="input-memo" class="col-sm-2 col-form-label">メモ（任意）</label>
       <div class="col-sm-10">
-        <%= f.text_area :memo, rows: "5", placeholder: "料理に関するエピソード等、ご自由に活用してください（この欄は空欄でも投稿できます）", class: "form-control", id:"exampleFormControlTextarea1" %>
+        <%= f.text_area :memo, rows: "5", placeholder: "料理に関するエピソード等、ご自由に活用してください（この欄は空欄でも投稿できます）", class: "form-control" %>
       </div>
     </div>
 
