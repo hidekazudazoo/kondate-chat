@@ -38,8 +38,17 @@
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">最近投稿されたレシピ</h1> 
-            
-            <%= image_tag 'doron.png' %> <!--仮置き画像-->
+
+            <div class="recipe-lists">
+              <% @recipes.each do |recipe| %>
+                <%= link_to '#' do %>
+                  <%= recipe.title %><br>
+                  <%= recipe.headline %>
+                  <%= image_tag recipe.image, class: 'recipe-image' %>
+                <% end %>
+              <% end %>
+            </div>
+
           </div>
         </div>
       </section>
