@@ -66,3 +66,7 @@ gem 'rails-i18n', '~> 6.0'
 gem 'devise-i18n'
 # Bootstrap
 gem 'devise-bootstrap-views', '~> 1.0'
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+gem 'pry-rails'
+gem 'active_hash'
