@@ -1,0 +1,24 @@
+<button type="button" class="btn btn-primary"><%= "#{@recipe.category.name}" %></button>
+
+<section class="py-5 text-center container">
+
+  <div class="recipe-title">
+    <%= @recipe.title %>
+  </div>
+  <div class="recipe-headline">
+    <%= @recipe.headline %>
+  </div>
+  <%= image_tag @recipe.image, class: 'recipe-image' %>
+  <div class="recipe-ingredient">
+    <%= @recipe.ingredient %>
+  </div>
+  <div class="recipe-direction">
+    <%= @recipe.direction %>
+  </div>
+  <div class="recipe-memo">
+    <%= @recipe.memo %>
+  </div>
+  <%= link_to "戻る", root_path, class: "btn btn-primary" %>
+
+
+</section>
