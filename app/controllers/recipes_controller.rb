@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order("created_at DESC")
   end
 
   def new
