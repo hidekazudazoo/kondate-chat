@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   has_many :recipes
-  has_many :comments
-  has_many :favorites
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+
+  def favorite_find(recipe_id)
+    favorites.where(recipe_id: recipe_id).exists?
+  end
 end
