@@ -2,6 +2,7 @@ class Recipe < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :user
+  has_many :comments
   has_one_attached :image
   with_options presence: true do
     validates :title

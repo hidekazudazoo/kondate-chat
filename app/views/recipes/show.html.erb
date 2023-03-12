@@ -1,6 +1,5 @@
-<button type="button" class="btn btn-primary"><%= "#{@recipe.category.name}" %></button>
-
 <section class="py-5 text-center container">
+<button type="button" class="btn btn-primary"><%= "#{@recipe.category.name}" %></button>
 
   <div class="recipe-title">
     <%= @recipe.title %>
@@ -9,15 +8,27 @@
     <%= @recipe.headline %>
   </div>
   <%= image_tag @recipe.image, class: 'recipe-image' %>
-  <div class="recipe-ingredient">
-    <%= @recipe.ingredient %>
+  <div class="border border-warning">
+    材料
+    <div class="recipe-ingredient">
+      <%= @recipe.ingredient %>
+    </div>
   </div>
-  <div class="recipe-direction">
-    <%= @recipe.direction %>
+  <br>
+  <div class="border border-warning">
+    作り方
+    <div class="recipe-direction">
+      <%= @recipe.direction %>
+    </div>
   </div>
-  <div class="recipe-memo">
-    <%= @recipe.memo %>
+  <br>
+  <div class="border border-warning">
+    メモ
+    <div class="recipe-memo">
+      <%= @recipe.memo %>
+    </div>
   </div>
+  <br>
   <%= link_to "戻る", root_path, class: "btn btn-primary" %>
 
 
