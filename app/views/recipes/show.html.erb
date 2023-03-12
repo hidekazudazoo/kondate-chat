@@ -13,19 +13,48 @@
     <div class="recipe-ingredient">
       <%= @recipe.ingredient %>
     </div>
-  </div>
-  <br>
+  </div><br>
   <div class="border border-warning">
     作り方
     <div class="recipe-direction">
       <%= @recipe.direction %>
     </div>
-  </div>
-  <br>
+  </div><br>
   <div class="border border-warning">
     メモ
     <div class="recipe-memo">
       <%= @recipe.memo %>
+    </div>
+  </div><br>
+  
+  <% if user_signed_in? && @recipe.user_id != current_user.id %>
+  <button type="button" class="btn btn-outline-danger">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+  </svg>お気に入り
+  </button>
+
+  
+  <% end %>
+
+  <div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@recipe, @comment], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2", class: "form-control" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %><br>
+
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
     </div>
   </div>
   <br>

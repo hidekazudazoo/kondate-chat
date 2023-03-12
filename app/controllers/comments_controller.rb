@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
-    Comment.create(comment_params)
-    redirect_to :create
+    comment = Comment.create(comment_params)
+    redirect_to "/recipes/#{comment.recipe.id}"
   end
 
   private
