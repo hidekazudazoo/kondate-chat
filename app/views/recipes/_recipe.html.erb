@@ -1,58 +1,64 @@
-  <%= form_with model: @recipe, url: recipes_path, local: true do |f| %>
-  <%= render 'shared/error_messages', model: @recipe %>
-  <form>
+  <button type="button" class="btn btn-secondary"><%= "#{@recipe.category.name}" %></button>
 
-    <div class="row mb-3">
-      <label for="input-title" class="col-sm-2 col-form-label">タイトル</label>
-      <div class="col-sm-10">
-        <%= f.text_field :title, autofocus: true, placeholder:"例）カレー鍋", class: "form-control" %>
+    <div class="recipe-title">
+      <%= @recipe.title %>
+    </div>
+    <div class="recipe-headline">
+      <%= @recipe.headline %>
+    </div>
+    <%= image_tag @recipe.image, class: 'recipe-image' %>
+    <div class="border border-warning">
+      材料
+      <div class="recipe-ingredient">
+        <%= @recipe.ingredient %>
+      </div>
+    </div><br>
+    <div class="border border-warning">
+      作り方
+      <div class="recipe-direction">
+        <%= @recipe.direction %>
+      </div>
+    </div><br>
+    <div class="border border-warning">
+      メモ
+      <div class="recipe-memo">
+        <%= @recipe.memo %>
+      </div>
+    </div><br>
+    
+    <% if user_signed_in? %>
+      <% if @recipe.user_id == current_user.id %>
+        <button type="button" class="btn btn-primary">編集</button>
+        <button type="button" class="btn btn-danger">削除</button>
+      <% else %>
+        <% if current_user.favorite_find(@recipe.id) %>
+          <%= link_to 'お気に入りからはずす', destroy_favorite_path(@recipe.id), method: :delete, remote: true, id: "remove-btn" %>
+        <% else %>
+          <%= link_to 'お気に入り登録する', create_favorite_path(@recipe.id), method: :post, remote: true, id: "favorite-btn" %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div class="container">
+      <h4>コメント</h4>
+      <% if user_signed_in? %>
+        <%= form_with(model: [@recipe, @comment], local: true) do |form| %>
+          <%= form.text_area :text, placeholder: "コメントする", rows: "2", class: "form-control" %><br>
+          <%= form.submit "コメント送信" %>
+        <% end %>
+      <% else %>
+        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <% end %><br>
+
+      <div class="comments">
+        <h5>＜コメント一覧＞</h5>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.text %>
+          </p>
+        <% end %>
       </div>
     </div>
-
-    <div class="row mb-3">
-      <label for="input-category" class="col-sm-2 col-form-label">カテゴリー</label>
-      <div class="col-sm-10">
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"form-select"}) %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label for="input-image" class="col-sm-2 col-form-label">写真</label>
-      <div class="col-sm-10">
-        <%= f.file_field :image, class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label for="input-headline" class="col-sm-2 col-form-label">メインコピー</label>
-      <div class="col-sm-10">
-        <%= f.text_area :headline, rows: "3", placeholder: "例）スパイスたくさんのピリ辛鍋", class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label for="input-ingredient" class="col-sm-2 col-form-label">材料</label>
-      <div class="col-sm-10">
-        <%= f.text_area :ingredient, rows: "10", placeholder: "例）にんじん、タマネギ、白菜", class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label for="input-direction" class="col-sm-2 col-form-label">作り方</label>
-      <div class="col-sm-10">
-        <%= f.text_area :direction, rows: "10", placeholder: "例）はじめに鍋のもとを作ります", class: "form-control" %>
-      </div>
-    </div>
-
-    <div class="row mb-3">
-      <label for="input-memo" class="col-sm-2 col-form-label">メモ（任意）</label>
-      <div class="col-sm-10">
-        <%= f.text_area :memo, rows: "5", placeholder: "料理に関するエピソード等、ご自由に活用してください（この欄は空欄でも投稿できます）", class: "form-control" %>
-      </div>
-    </div>
-
-    <input class="btn btn-primary" type="submit" value="投稿する">
+    <br>
     <%= link_to "戻る", root_path, class: "btn btn-primary" %>
-
-  </form>
-  <% end %>
