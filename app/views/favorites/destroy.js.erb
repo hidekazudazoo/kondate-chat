@@ -1,1 +1,2 @@
-document.getElementById("remove-btn").innerHTML = 'お気に入り登録する'
+
+document.getElementById("favorite_<%= @recipe.id %>").innerHTML = '<%= j(render @favorite) %>'

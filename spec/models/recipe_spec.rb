@@ -19,32 +19,32 @@ RSpec.describe Recipe, type: :model do
       it 'タイトルが空の場合は投稿できない' do
         @recipe.title = ''
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("タイトルを入力してください")
+        expect(@recipe.errors.full_messages).to include('タイトルを入力してください')
       end
       it 'カテゴリーが選択されていない場合は投稿できない' do
         @recipe.category_id = 0
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("カテゴリーを選択してください")
+        expect(@recipe.errors.full_messages).to include('カテゴリーを選択してください')
       end
       it '写真が空の場合は投稿できない' do
         @recipe.image = nil
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("写真を入力してください")
+        expect(@recipe.errors.full_messages).to include('写真を入力してください')
       end
       it 'メインコピーが空の場合は投稿できない' do
         @recipe.headline = ''
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("メインコピーを入力してください")
+        expect(@recipe.errors.full_messages).to include('メインコピーを入力してください')
       end
       it '材料が空の場合は投稿できない' do
         @recipe.ingredient = ''
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("材料を入力してください")
+        expect(@recipe.errors.full_messages).to include('材料を入力してください')
       end
       it '作り方が空の場合は投稿できない' do
         @recipe.direction = ''
         @recipe.valid?
-        expect(@recipe.errors.full_messages).to include("作り方を入力してください")
+        expect(@recipe.errors.full_messages).to include('作り方を入力してください')
       end
     end
   end
