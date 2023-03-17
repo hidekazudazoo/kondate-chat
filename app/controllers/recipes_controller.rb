@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
-
   def index
-    @recipes = Recipe.all.order("created_at DESC")
+    @recipes = Recipe.all.order('created_at DESC')
   end
 
   def new
@@ -17,8 +16,16 @@ class RecipesController < ApplicationController
     end
   end
 
+  def show
+    @recipe = Recipe.find(params[:id])
+    @comment = Comment.new
+    @comments = @recipe.comments.includes(:user)
+  end
+
   private
+
   def recipe_params
-    params.require(:recipe).permit(:title, :category_id, :headline, :ingredient, :direction, :memo, :image).merge(user_id: current_user.id)
+    params.require(:recipe).permit(:title, :category_id, :headline, :ingredient, :direction, :memo,
+                                   :image).merge(user_id: current_user.id)
   end
 end
