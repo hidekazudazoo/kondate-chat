@@ -1,1 +1,1 @@
-alert("お気に入り登録しました")
+document.getElementById("favorite_<%= @recipe.id %>").innerHTML = '<%= j(render 'favorites/favorite_area', recipe: @recipe) %>'
