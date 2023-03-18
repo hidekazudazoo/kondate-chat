@@ -25,9 +25,9 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    if @recipe.user != current_user
-      redirect_to root_path
-    end
+    return unless @recipe.user != current_user
+
+    redirect_to root_path
   end
 
   def update
