@@ -1,5 +1,7 @@
-<div class="contents row">
-  <p><%= @nickname %>さんの投稿一覧</p>
-        <%= image_tag 'doron.png' %> <!--仮置き画像-->
+<section class="py-5 text-center container">
 
-</div>
+  <%= @user.nickname %>さんのマイページ<br>
+
+  <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>
+
+</section>
