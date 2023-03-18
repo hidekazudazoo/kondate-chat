@@ -11,7 +11,7 @@
 - has_many :recipes
 - has_many :comments
 - has_many :favorites
-- has_one  :calendar
+- has_many :calendars
 
 
 ## recipes テーブル

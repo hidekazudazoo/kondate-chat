@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :calenders, dependent: :destroy
 
   def favorite_find(recipe_id)
     favorites.where(recipe_id: recipe_id).exists?
