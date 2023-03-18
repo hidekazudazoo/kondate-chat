@@ -1,5 +1,8 @@
-<%= form_with model: @recipe, url: recipes_path, local: true do |f| %>
-<%= render 'shared/error_messages', model: @recipe %>
+<section class="py-5 text-center container">
+  <h2>レシピ編集</h2>
+  <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: @recipe %>
+
 <form>
 
   <div class="row mb-3">
@@ -51,8 +54,10 @@
     </div>
   </div>
 
-  <input class="btn btn-primary" type="submit" value="投稿する">
+  <input class="btn btn-primary" type="submit" value="更新する">
   <%= link_to "戻る", root_path, class: "btn btn-primary" %>
 
 </form>
-<% end %>
+
+  <% end %>
+</section>
