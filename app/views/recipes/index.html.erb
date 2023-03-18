@@ -36,7 +36,7 @@
         <%= link_to 'レシピ投稿', new_recipe_path, class: "btn btn-primary my-2" %>
         <% end %>
         <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="col-lg-10 col-md-8 mx-auto">
             <h1 class="fw-light">最近投稿されたレシピ</h1> 
 
             <div class="recipe-lists">
@@ -48,7 +48,7 @@
                   <div class="recipe-headline">
                     <%= recipe.headline %>
                   </div>
-                  <%= image_tag recipe.image, class: 'recipe-image' %>
+                  <%= image_tag recipe.image.variant(resize: '700 x 700'), class: 'recipe-image' %>
                 <% end %>
               <% end %>
             </div>
