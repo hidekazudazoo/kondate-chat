@@ -1,5 +1,8 @@
 <section class="py-5 text-center container">
 
+<h2><%= @user.nickname %>さんのマイページ<br></h2>
+
+
 <%= form_with model: [@user, @calender], url: user_calenders_path(@user.id), local: true do |f| %>
 
   <div class="menu">
@@ -24,7 +27,6 @@
 
 <% end %>
 
-  <%= @user.nickname %>さんのマイページ<br>
 
 
 <%= month_calendar do |date| %>
