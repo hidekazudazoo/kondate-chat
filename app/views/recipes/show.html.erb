@@ -32,7 +32,7 @@
   <div class="edit-delete">
     <% if user_signed_in? && @recipe.user_id == current_user.id %>
       <%= link_to '編集', edit_recipe_path(@recipe.id), class: "btn btn-primary" %>
-      <button type="button" class="btn btn-danger">削除</button>
+      <%= link_to '削除', recipe_path(@recipe.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
     <% end %>
   </div>
 
