@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     if @user.id != current_user.id
       redirect_to root_path
     end
+    @calender = Calender.new
+    @calenders = @user.calenders
   end
-
 end
