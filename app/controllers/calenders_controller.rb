@@ -4,6 +4,10 @@ class CalendersController < ApplicationController
     redirect_to "/users/#{calender.user.id}"
   end
 
+  def show
+    @calenders = Calender.find(params[:id])
+  end
+
   private
 
   def calender_params

@@ -34,7 +34,7 @@
 
   <% calenders.each do |calender| %>
     <div>
-      <%= calender.menu %>
+      <%= link_to calender.menu, user_calender_path(@calender.id) %>
     </div>
   <% end %>
 <% end %>
