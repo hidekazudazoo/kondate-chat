@@ -29,9 +29,17 @@
 
 
 
-<%= month_calendar do |date| %>
+<%= month_calendar(events: @calenders) do |date, calenders| %>
   <%= date.day %>
+
+  <% calenders.each do |calender| %>
+    <div>
+      <%= calender.menu %>
+    </div>
+  <% end %>
 <% end %>
+
+
 
   <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>
 
