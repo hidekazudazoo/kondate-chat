@@ -2,4 +2,25 @@
 
 <h1>カレンダーshow</h1>
 
+<div class="show">
+<p>
+  <strong>メニュー</strong>
+  <%= @calender.menu %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @calender.content %>
+</p>
+
+<p>
+  <strong>日程</strong>
+  <%= @calender.date %>
+</p>
+
+<%= link_to '編集', edit_user_calender_path(@calender.id) %>
+<%= link_to '消去', user_calender_path(@calender.id), method: :delete, data: { confirm: '消去しますか？'} %>
+<%= link_to '戻る', "/users/#{@calender.user.id}" %>
+</div>
+
 </section>
