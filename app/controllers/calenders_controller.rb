@@ -1,5 +1,7 @@
 class CalendersController < ApplicationController
+  before_action :correct_user
   before_action :set_calender, only: [:show, :edit, :update]
+
   def create
     Calender.create(calender_params)
     redirect_to request.referer
@@ -31,5 +33,13 @@ class CalendersController < ApplicationController
 
   def set_calender
     @calender = Calender.find(params[:id])
+  end
+
+  private
+  def correct_user
+    @user = User.find(params[:user_id])
+    if @user.id != current_user.id
+      redirect_to root_path
+    end
   end
 end
