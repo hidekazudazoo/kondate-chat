@@ -1,30 +1,34 @@
 <section class="py-5 text-center container">
 
-<h2><%= @user.nickname %>さんのマイページ<br></h2>
+<h1><%= @user.nickname %>さんのマイページ<br></h1>
+<div class="mypage-subtitle">
+  <h5>メニューを登録する</h5>
+</div>
 
-  <%= form_with model: [@user, @calender], url: user_calenders_path(@user.id), method: :post, local: true do |f| %>
+<%= form_with model: [@user, @calender], url: user_calenders_path(@user.id), method: :post, local: true do |f| %>
 
-    <div class="menu">
-      <div class="form-tag">メニュー</div>
-      <%= f.text_field :menu %>
-    </div>
-
-    <div class="content">
-      <div class="form-tag">内容</div>
-      <%= f.text_field :content %>
-    </div>
-
-      <div class="time">
-      <div class="form-tag">日程</div>
-      <%= f.date_select :date %>
-    </div>
-
-  <div class="submit">
-      <%= f.submit %>
+  <div class="menu">
+    <div class="form-tag">メニュー</div>
+    <%= f.text_field :menu %>
   </div>
 
-  <% end %>
+  <div class="content">
+    <div class="form-tag">内容</div>
+    <%= f.text_field :content %>
+  </div>
 
+    <div class="time">
+    <div class="form-tag">日程</div>
+    <%= f.date_select :date %>
+  </div>
+
+<div class="submit">
+    <%= f.submit %>
+</div>
+
+<% end %>
+
+<div class="calender">
   <%= month_calendar(events: @calenders) do |date, calender| %>
     <%= date.day %>
 
@@ -34,7 +38,9 @@
       </div>
     <% end %>
   <% end %>
+</div>
 
+<div class="top-btn">
   <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>
-
+</div>
 </section>

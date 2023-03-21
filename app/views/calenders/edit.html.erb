@@ -1,6 +1,6 @@
 <section class="py-5 text-center container">
 
-<h1>カレンダー編集</h1>
+<h1>メニュー編集</h1>
 
   <%= form_with model: [@user, @calender], url: user_calender_path(@user.id), local: true do |f| %>
 
@@ -25,5 +25,7 @@
   </div>
 
   <% end %>
+
+  <%= link_to '戻る', user_calender_path %>
 
 </section>
