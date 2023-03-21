@@ -1,6 +1,6 @@
 class CalendersController < ApplicationController
   before_action :correct_user
-  before_action :set_calender, only: [:show, :edit, :update]
+  before_action :set_calender, only: [:show, :edit, :update, :destroy]
 
   def create
     Calender.create(calender_params)
@@ -11,7 +11,6 @@ class CalendersController < ApplicationController
   end
 
   def edit
-    @user = @calender.user
   end
 
   def update
@@ -23,6 +22,8 @@ class CalendersController < ApplicationController
   end
 
   def destroy
+    @calender.destroy
+    redirect_to user_path(@calender.user.id)
   end
 
   private

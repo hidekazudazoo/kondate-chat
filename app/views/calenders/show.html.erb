@@ -18,8 +18,8 @@
   <%= @calender.date %>
 </p>
 
-<%= link_to '編集', edit_user_calender_path(@calender.id) %>
-<%= link_to '消去', user_calender_path(@calender.id), method: :delete, data: { confirm: '消去しますか？'} %>
+<%= link_to '編集', edit_user_calender_path(@user,@calender.id) %>
+<%= link_to '消去', user_calender_path(@user,@calender.id), method: :delete, data: { confirm: '消去しますか？'} %>
 <%= link_to '戻る', user_path(@calender.user.id) %>
 </div>
 
