@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2023_03_18_071108) do
 
   create_table "calenders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "menu", null: false
+    t.integer "menulist_id", null: false
     t.text "content"
     t.date "date", null: false
     t.bigint "user_id", null: false
