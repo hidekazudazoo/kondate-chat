@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @nickname = current_user.nickname
     @calender = Calender.new
     @calenders = @user.calenders
+    @menulists = Menulist.all
   end
 
   private

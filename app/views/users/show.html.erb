@@ -29,15 +29,25 @@
 <% end %>
 
 <div class="calender">
+<% if @calenders.present? %>
   <%= month_calendar(events: @calenders) do |date, calender| %>
     <%= date.day %>
-
-    <% calender.each do |blog| %>
-      <div>
-        <%= link_to blog.menu, user_calender_path(@user,blog) %>
-      </div>
+    <% calender.each do |m| %>
+    <div>
+      <%= link_to m.menu, user_calender_path(@user, m) %>
+    </div>
     <% end %>
   <% end %>
+<% else %>
+  <%= month_calendar(events: @menulists) do |date, menus| %>
+    <%= date.day %>
+    <% menus.each do |menu| %>
+    <div>
+      <%= menu.name %>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
 </div>
 
 <div class="top-btn">
