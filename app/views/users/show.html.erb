@@ -28,6 +28,10 @@
 
 <% end %>
 
+<div class="destroy-allbtn">
+  <%= button_to "全て削除", destroy_all_user_calender_path(@user.id), method: :delete, data: { confirm: '全て削除されますがよろしいですか？'} %>
+</div>
+
 <div class="calender">
 <% if @calenders.present? %>
   <%= month_calendar(events: @calenders) do |date, calender| %>

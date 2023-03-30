@@ -26,6 +26,12 @@ class CalendersController < ApplicationController
     redirect_to user_path(@calender.user.id)
   end
 
+  def destroy_all
+    @calenders = Calender.all
+    Calender.destroy_all
+    redirect_to request.referer
+  end
+
   private
 
   def calender_params
@@ -36,7 +42,6 @@ class CalendersController < ApplicationController
     @calender = Calender.find(params[:id])
   end
 
-  private
   def correct_user
     @user = User.find(params[:user_id])
     if @user.id != current_user.id
