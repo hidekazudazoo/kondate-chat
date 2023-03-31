@@ -27,8 +27,8 @@ class CalendersController < ApplicationController
   end
 
   def destroy_all
-    @calenders = Calender.all
-    Calender.destroy_all
+    @calenders = Calender.where(user_id: current_user.id)
+    @calenders.destroy_all
     redirect_to request.referer
   end
 
