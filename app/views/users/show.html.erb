@@ -2,7 +2,10 @@
 
 <h1><%= @user.nickname %>さんのマイページ<br></h1>
 <div class="mypage-subtitle">
-  <h5>メニューを登録する</h5>
+  <h3>メニューを登録する</h3>
+  <div class="menu-explanation">
+  メニューを登録すると、はじめに表示されているメニューは表示されなくなります
+  </div>
 </div>
 
 <%= form_with model: [@user, @calender], url: user_calenders_path(@user.id), method: :post, local: true do |f| %>
@@ -14,7 +17,7 @@
 
   <div class="content">
     <div class="form-tag">内容</div>
-    <%= f.text_field :content %>
+    <%= f.text_field :content, placeholder: "任意" %>
   </div>
 
     <div class="time">
@@ -29,7 +32,10 @@
 <% end %>
 
 <div class="destroy-allbtn">
-  <%= button_to "全て削除", destroy_all_user_calender_path(@user.id), method: :delete, data: { confirm: '全て削除されますがよろしいですか？'} %>
+  <%= button_to "登録したメニューを全て削除", destroy_all_user_calender_path(@user.id), method: :delete, data: { confirm: '全て削除されますがよろしいですか？'}, class:"btn btn-danger" %>
+    <div class="menu-explanation">
+    全て削除すると、はじめに表示されていたメニューが再度表示されるようになります
+    </div>
 </div>
 
 <div class="calender">
@@ -54,6 +60,10 @@
 <% end %>
 </div>
 
+<div class="choice-btn">
+  <button type="button" class="btn btn-info">投稿したレシピ</button>
+  <button type="button" class="btn btn-info">お気に入り一覧</button>
+</div>
 <div class="top-btn">
   <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>
 </div>
