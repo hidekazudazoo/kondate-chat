@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: :show
+  before_action :correct_user, except: :index
 
   def show
     @user = User.find(params[:id])
@@ -11,16 +11,15 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.find_by(id: params[:id])
+    @users = [current_user]
     @recipes = current_user.recipes
+    correct_user
   end
 
   private
   def correct_user
-    @user = User.find_by(id: params[:id])
-    if @user.nil? || @user.id != current_user.id
+    if params[:id] && User.find_by(id:params[:id]) != current_user
       redirect_to root_path
     end
   end
-
 end
