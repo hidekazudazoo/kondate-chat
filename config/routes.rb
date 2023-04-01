@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "recipes#index"
-  resources :users, only: :show do
+  resources :users, only: [:show, :index] do
     resources :calenders, only: [:create, :show, :edit, :update, :destroy] do
       member do
         delete 'destroy_all'
