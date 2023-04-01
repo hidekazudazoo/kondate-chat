@@ -1,0 +1,26 @@
+<section class="py-5 text-center container">
+
+<h1>メニュー詳細</h1>
+
+<div class="show">
+<p>
+  <strong>メニュー</strong>
+  <%= @calender.menu %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @calender.content %>
+</p>
+
+<p>
+  <strong>日程</strong>
+  <%= @calender.date %>
+</p>
+
+<%= link_to '編集', edit_user_calender_path(@user,@calender.id) %>
+<%= link_to '消去', user_calender_path(@user,@calender.id), method: :delete, data: { confirm: '消去しますか？'} %>
+<%= link_to '戻る', user_path(@calender.user.id) %>
+</div>
+
+</section>

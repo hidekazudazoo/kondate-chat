@@ -1,5 +1,70 @@
-<div class="contents row">
-  <p><%= @nickname %>さんの投稿一覧</p>
-        <%= image_tag 'doron.png' %> <!--仮置き画像-->
+<section class="py-5 text-center container">
 
+<h1><%= @user.nickname %>さんのマイページ<br></h1>
+<div class="mypage-subtitle">
+  <h3>メニューを登録する</h3>
+  <div class="menu-explanation">
+  メニューを登録すると、はじめに表示されているメニューは表示されなくなります
+  </div>
 </div>
+
+<%= form_with model: [@user, @calender], url: user_calenders_path(@user.id), method: :post, local: true do |f| %>
+
+  <div class="menu">
+    <div class="form-tag">メニュー</div>
+    <%= f.text_field :menu %>
+  </div>
+
+  <div class="content">
+    <div class="form-tag">内容</div>
+    <%= f.text_field :content, placeholder: "任意" %>
+  </div>
+
+    <div class="time">
+    <div class="form-tag">日程</div>
+    <%= f.date_select :date %>
+  </div>
+
+<div class="submit">
+    <%= f.submit %>
+</div>
+
+<% end %>
+
+<div class="destroy-allbtn">
+  <%= button_to "登録したメニューを全て削除", destroy_all_user_calender_path(@user.id), method: :delete, data: { confirm: '全て削除されますがよろしいですか？'}, class:"btn btn-danger" %>
+    <div class="menu-explanation">
+    全て削除すると、はじめに表示されていたメニューが再度表示されるようになります
+    </div>
+</div>
+
+<div class="calender">
+<% if @calenders.present? %>
+  <%= month_calendar(events: @calenders) do |date, calender| %>
+    <%= date.day %>
+    <% calender.each do |m| %>
+    <div>
+      <%= link_to m.menu, user_calender_path(@user, m) %>
+    </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= month_calendar(events: @menulists) do |date, menus| %>
+    <%= date.day %>
+    <% menus.each do |menu| %>
+    <div>
+      <%= menu.name %>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
+</div>
+
+<div class="choice-btn">
+  <%= link_to "投稿したレシピ", users_path(@user), class: "btn btn-info" %>
+  <%= link_to "お気に入り一覧", favorites_user_path(@user), class: "btn btn-info" %>
+</div>
+<div class="top-btn">
+  <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>
+</div>
+</section>
