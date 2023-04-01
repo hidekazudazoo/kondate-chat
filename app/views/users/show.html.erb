@@ -62,7 +62,7 @@
 
 <div class="choice-btn">
   <%= link_to "投稿したレシピ", users_path(@user), class: "btn btn-info" %>
-  <button type="button" class="btn btn-info">お気に入り一覧</button>
+  <%= link_to "お気に入り一覧", favorites_user_path(@user), class: "btn btn-info" %>
 </div>
 <div class="top-btn">
   <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary" %>

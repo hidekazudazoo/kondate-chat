@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     correct_user
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @favorite_recipes = @user.favorite_recipes
+  end
+
   private
   def correct_user
     if params[:id] && User.find_by(id:params[:id]) != current_user

@@ -7,9 +7,10 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
+    get 'favorites', on: :member
   end
   resources :recipes do
     resources :comments, only: :create
-    resource :favorites, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy, :show]
   end
 end
