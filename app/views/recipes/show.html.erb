@@ -43,7 +43,7 @@
   </div>
 
   <div class="container">
-    <h4>コメント</h4>
+    <h4>コメント投稿</h4>
     <% if user_signed_in? %>
       <%= form_with model: [@recipe, @comment], id: "comment-form" do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2", class: "form-control" %><br>
@@ -51,9 +51,10 @@
       <% end %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-    <% end %><br>
+      <%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary" %>
+    <% end %>
 
-    <div id="comments">
+    <div class="comments", id="comments">
       <h4>＜コメント一覧＞</h4>
       <% @comments.each do |comment| %>
         <div class="comment">
