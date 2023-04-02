@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get 'favorites', on: :member
   end
   resources :recipes do
-    resources :comments, only: :create
+    resources :comments, only: [:create]
     resource :favorites, only: [:create, :destroy, :show]
   end
 end
