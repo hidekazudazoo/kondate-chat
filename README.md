@@ -40,7 +40,7 @@ https://gyazo.com/7eb15275d3cb9cdf72df4b4acb830d98
 マイページのカレンダーに、メニュー提案機能の追加
 
 # データベース設計
-![ER図](drawio.svg)
+https://github.com/hidekazudazoo/kondate-chat/blob/main/ER%E5%9B%B3.svg
 
 # 画面遷移図
 ![画面遷移図](.svg)
