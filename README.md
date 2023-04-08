@@ -30,14 +30,14 @@ https://kondate-chat.onrender.com
 現時点では提案機能を実装できていませんが、そのような機能を実装できるように、引き続き学習を続けていきます。  
 
 # 洗い出した要件
-https://drive.google.com/file/d/1TKONVjC08WsOeM4VGr7cpyTAp8UHDBNu/view?usp=share_link
+https://drive.google.com/file/d/1U1UYh0aXCwVVWrcG109QjxCmwsoAm386/view?usp=share_link
 
 # 実装した機能についての画像やGIFおよびその説明
-
+ログイン後にマイページに遷移すると、カレンダー内にメニューが表示されます。
 https://gyazo.com/7eb15275d3cb9cdf72df4b4acb830d98
 
 # 実装予定の機能
-マイページのカレンダーに、メニュー提案機能の追加
+マイページのカレンダーに、メニュー提案機能の追加を予定しています。
 
 # データベース設計
 https://github.com/hidekazudazoo/kondate-chat/blob/main/ER%E5%9B%B3.svg
@@ -56,5 +56,4 @@ Ruby on rails
 % yarn install  
 
 # 工夫したポイント
-・お気に入り登録ボタンの非同期化  
-・マイページ内にカレンダー表示  
+お気に入り登録ボタンの非同期化と、マイページ内にカレンダーとメニューを表示するところが工夫したポイントです。
