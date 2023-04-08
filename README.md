@@ -40,11 +40,10 @@ https://gyazo.com/7eb15275d3cb9cdf72df4b4acb830d98
 マイページのカレンダーに、メニュー提案機能の追加
 
 # データベース設計
-![ER図 drawio](https://user-images.githubusercontent.com/118248290/230714725-8c87bd3a-bbe2-4439-ba62-31c74213eeac.svg)
-
+![ER図](drawio.svg)
 
 # 画面遷移図
-
+![画面遷移図](.svg)
 
 # 開発環境
 Ruby on rails
